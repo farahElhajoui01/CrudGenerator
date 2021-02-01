@@ -43,9 +43,6 @@ function getColumnsNamesAndTypes($tableName,$db) {
        }
        unset($columns[0]);
        return $columns;
-        }
+       }
 
-        function IdentifyType($type){
-
-                 }
 ?>

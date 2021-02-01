@@ -3,6 +3,24 @@
 include 'Connexion.php';
 include 'ShowTables.php';
 
+if(isset($_REQUEST['error']))
+{
+
+
+  if($_REQUEST['error']==''){
+
+  echo '<script type="text/javascript">'
+  , 'alert("Row successfully Added!");'
+  , '</script>';
+  }
+  else
+  echo '<script type="text/javascript">'
+  , 'alert('.'"'.$_REQUEST['error'].'"'.');'
+  , '</script>';
+  
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +83,7 @@ include 'ShowTables.php';
         <h4 class="modal-title">Add New Row</h4>
       </div>
       <div class="modal-body">
-      <form>
+      <form Method="POST" Action="ADD.php">
       
       
       
@@ -76,8 +94,10 @@ include 'ShowTables.php';
           
     <div class="form-group">
     <label for="exampleInputEmail1"><?php echo $columnsTable[$j]['column_name'] ?></label>
-    <input type="text" class="form-control" id="exampleInputEmail1"  >
+    <input type="text" class="form-control" id="exampleInputEmail1" name=<?php echo $columnsTable[$j]['column_name'] ?>  >
     </div>
+    <input type="hidden" name="tablename" value="<?php echo $tables[$i]["$indexTables"]; ?>">
+
 
        <?php } ?>
 
