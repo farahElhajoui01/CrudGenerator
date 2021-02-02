@@ -10,7 +10,7 @@ if(isset($_REQUEST['error']))
   if($_REQUEST['error']==''){
 
   echo '<script type="text/javascript">'
-  , 'alert("Row successfully Added!");'
+  , 'alert("Well done!");'
   , '</script>';
   }
   else
@@ -67,7 +67,7 @@ if(isset($_REQUEST['error']))
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<?php echo $id ?> ><i class="fa fa-plus"></i></button>
               <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target=<?php echo $id.'a' ?> ><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
 
@@ -113,7 +113,43 @@ if(isset($_REQUEST['error']))
 </div>
 
 
-         <?php } ?>
+
+
+
+      <div id=<?php echo $idm.'a' ?> class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Delete a row</h4>
+              </div>
+              <div class="modal-body">
+                  <form Method="GET" Action="delete.php">
+
+
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">id: </label>
+                              <input type="text" class="form-control" id="exampleInputEmail1" name="idd" >
+                              <input type="hidden" name="tablenamee" value="<?php echo $tables[$i]["$indexTables"]; ?>">
+
+                          </div>
+
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+    <?php } ?>
+
   
         </tbody>
       </table>
