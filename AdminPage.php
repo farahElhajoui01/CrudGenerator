@@ -66,7 +66,7 @@ if(isset($_REQUEST['error']))
 
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<?php echo $id ?> ><i class="fa fa-plus"></i></button>
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target=<?php echo $id.'u' ?> ><i class="fas fa-edit"></i></button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target=<?php echo $id.'a' ?> ><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
@@ -112,7 +112,34 @@ if(isset($_REQUEST['error']))
   </div>
 </div>
 
-
+    <div id=<?php echo $idm.'u' ?> class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal Update-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Update a row</h4>
+          </div>
+          <div class="modal-body">
+            <form Method="POST" Action="modify.php">
+              <div class="form-group">
+                <label for="id">ID : </label>
+                <input type="text" class="form-control" id="id" name="id" >
+                <label for="id">Attribute 1 : </label>
+                <input type="text" class="form-control" id="attribute1" name="attribute1" >
+                <label for="id">Attribute 2 : </label>
+                <input type="text" class="form-control" id="attribute2" name="attribute2" >
+                <input type="hidden" name="vtablename" value="<?php echo $tables[$i]["$indexTables"]; ?>">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
